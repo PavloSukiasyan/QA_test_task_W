@@ -30,23 +30,29 @@ export class ContactDetailComp extends BasePageComponent {
   public async fillContactInfoForm(args: {
     firstName: string;
     lastName: string;
-    twitter: string;
-    avatarURL: string;
-    notes: string;
+    twitter?: string;
+    avatarURL?: string;
+    notes?: string;
   }): Promise<void> {
     await this.firstNameInput.fill(args.firstName);
     await this.lastNameInput.fill(args.lastName);
-    await this.twitterInput.fill(args.twitter);
-    await this.avatarURLInput.fill(args.avatarURL);
-    await this.notesInput.fill(args.notes);
+    if (args.twitter) {
+      await this.twitterInput.fill(args.twitter);
+    }
+    if (args.avatarURL) {
+      await this.avatarURLInput.fill(args.avatarURL);
+    }
+    if (args.notes) {
+      await this.notesInput.fill(args.notes);
+    }
   }
 
   public async fillContactInfoFormAndSave(args: {
     firstName: string;
     lastName: string;
-    twitter: string;
-    avatarURL: string;
-    notes: string;
+    twitter?: string;
+    avatarURL?: string;
+    notes?: string;
   }): Promise<void> {
     await this.fillContactInfoForm(args);
     await this.saveButton.click();

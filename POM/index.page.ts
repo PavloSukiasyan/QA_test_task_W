@@ -25,4 +25,10 @@ export class WebClient {
     this.contactDetailComp = new ContactDetailComp(page);
     this.contactNavigationComp = new ContactNavigationComp(page);
   }
+
+  public async acceptDialog(): Promise<void> {
+    this.page.on('dialog', async dialog => {
+      await dialog.accept();
+    });
+  }
 }
