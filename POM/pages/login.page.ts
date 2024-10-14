@@ -23,4 +23,9 @@ export class LoginPage extends BasePage {
     await this.passwordInput.fill(password);
     await this.loginButton.click();
   }
+
+  public async signInWithDefaultUser(): Promise<void> {
+    await this.openLogin();
+    await this.login('test', 'test');
+  }
 }
