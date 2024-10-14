@@ -7,7 +7,7 @@ test.describe('Tests for create contact:', () => {
   const avatarURL = 'https://pbs.twimg.com/profile_images/1827448004900474880/y6cYT3lP_400x400.jpg';
   const notes = 'test!';
 
-  test.only('T2: Create contact', async ({ testWebClient }) => {
+  test('T2: Create contact', async ({ testWebClient }) => {
     await test.step('Sign in with default user', async () => {
       await testWebClient.loginPage.signInWithDefaultUser();
     });
