@@ -6,7 +6,7 @@ interface AuthProvider {
 }
 
 function checkAuthentication() {
-  let user = localStorage.getItem("user");
+  let user = localStorage.getItem('user');
   return user ? true : false;
 }
 
@@ -17,15 +17,15 @@ export const fakeAuthProvider: AuthProvider = {
   isAuthenticated: checkAuthentication(),
   username: null,
   async signin(username: string) {
-    await new Promise((r) => setTimeout(r, 500)); // fake delay
+    await new Promise(r => setTimeout(r, 500)); // fake delay
     fakeAuthProvider.isAuthenticated = true;
     fakeAuthProvider.username = username;
-    localStorage.setItem("user", username);
+    localStorage.setItem('user', username);
   },
   async signout() {
-    await new Promise((r) => setTimeout(r, 500)); // fake delay
+    await new Promise(r => setTimeout(r, 500)); // fake delay
     fakeAuthProvider.isAuthenticated = false;
-    fakeAuthProvider.username = "";
-    localStorage.removeItem("user");
+    fakeAuthProvider.username = '';
+    localStorage.removeItem('user');
   },
 };

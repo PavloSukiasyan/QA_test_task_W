@@ -1,5 +1,5 @@
-import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
-import { ContactEntry, updateContact } from "../contacts";
+import { Form, redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { ContactEntry, updateContact } from '../contacts';
 
 export async function editAction({ request, params }) {
   const formData = await request.formData();
@@ -35,13 +35,7 @@ export default function EditContact() {
       </p>
       <label>
         <span>Twitter</span>
-        <input
-          type="text"
-          name="twitter"
-          placeholder="@jack"
-          defaultValue={contact.twitter}
-          data-testid="twitter"
-        />
+        <input type="text" name="twitter" placeholder="@jack" defaultValue={contact.twitter} data-testid="twitter" />
       </label>
       <label>
         <span>Avatar URL</span>
@@ -56,12 +50,7 @@ export default function EditContact() {
       </label>
       <label>
         <span>Notes</span>
-        <textarea
-          name="notes"
-          defaultValue={contact.notes}
-          rows={6}
-          data-testid="notes"
-        />
+        <textarea name="notes" defaultValue={contact.notes} rows={6} data-testid="notes" />
       </label>
       <p>
         <button type="submit" data-testid="save-contact">

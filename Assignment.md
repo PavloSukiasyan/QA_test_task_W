@@ -9,7 +9,7 @@ Your task is to create tests in organized manner that validate the functionality
 
 Automated Tests Assignment:
 
-1.) Please familiarize yourself with Playwright (https://playwright.dev/docs/intro) and its features and integrate it into the provided project by replacing the `PLACEHOLDER` of the `test` script command in the package.json file, so we can execute your tests simply by running `npm run test`. Please put your test inside of the `tests` subdirectory. 
+1.) Please familiarize yourself with Playwright (https://playwright.dev/docs/intro) and its features and integrate it into the provided project by replacing the `PLACEHOLDER` of the `test` script command in the package.json file, so we can execute your tests simply by running `npm run test`. Please put your test inside of the `tests` subdirectory.
 
 2.) Use the Playwright API to create automated tests for the following use cases:
 

@@ -1,0 +1,29 @@
+{
+  "semi": true,
+  "arrowParens": "avoid",
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "printWidth": 120,
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "printWidth": 1000
+      }
+    },
+    {
+      "files": "package*.json",
+      "options": {
+        "printWidth": 1000
+      }
+    },
+    {
+      "files": "*.yml",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
+  "endOfLine": "lf"
+}

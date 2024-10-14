@@ -1,36 +1,36 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import Root, { createContactAction, rootLoader } from "./routes/Root.tsx";
-import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
-import ErrorPage from "./ErrorPage.tsx";
-import Contact, { contactLoader, favoriteAction } from "./routes/Contact.tsx";
-import EditContact, { editAction } from "./routes/Edit.tsx";
-import { destroyContactAction } from "./routes/Destroy.tsx";
-import Index from "./routes/Index.tsx";
-import Login, { loginAction, loginLoader } from "./routes/Login.tsx";
-import Layout from "./Layout.tsx";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import Root, { createContactAction, rootLoader } from './routes/Root.tsx';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
+import ErrorPage from './ErrorPage.tsx';
+import Contact, { contactLoader, favoriteAction } from './routes/Contact.tsx';
+import EditContact, { editAction } from './routes/Edit.tsx';
+import { destroyContactAction } from './routes/Destroy.tsx';
+import Index from './routes/Index.tsx';
+import Login, { loginAction, loginLoader } from './routes/Login.tsx';
+import Layout from './Layout.tsx';
 
-import "./index.css";
-import { fakeAuthProvider } from "./auth.tsx";
+import './index.css';
+import { fakeAuthProvider } from './auth.tsx';
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     errorElement: <ErrorPage />,
     action: createContactAction,
     children: [
       {
-        path: "login",
+        path: 'login',
         action: loginAction,
         loader: loginLoader,
         Component: Login,
       },
       {
-        path: "/logout",
+        path: '/logout',
         async action() {
           // We signout in a "resource route" that we can hit from a fetcher.Form
           await fakeAuthProvider.signout();
-          return redirect("/login");
+          return redirect('/login');
         },
       },
       {
@@ -40,19 +40,19 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Index /> },
           {
-            path: "contacts/:contactId",
+            path: 'contacts/:contactId',
             element: <Contact />,
             loader: contactLoader,
             action: favoriteAction,
           },
           {
-            path: "contacts/:contactId/edit",
+            path: 'contacts/:contactId/edit',
             element: <EditContact />,
             loader: contactLoader,
             action: editAction,
           },
           {
-            path: "contacts/:contactId/destroy",
+            path: 'contacts/:contactId/destroy',
             action: destroyContactAction,
           },
         ],
@@ -61,8 +61,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );

@@ -1,15 +1,6 @@
-import {
-  Form,
-  NavLink,
-  Outlet,
-  redirect,
-  useFetcher,
-  useLoaderData,
-  useNavigation,
-  useSubmit,
-} from "react-router-dom";
-import { ContactEntry, getContacts, createContact } from "../contacts";
-import { fakeAuthProvider } from "../auth";
+import { Form, NavLink, Outlet, redirect, useFetcher, useLoaderData, useNavigation, useSubmit } from 'react-router-dom';
+import { ContactEntry, getContacts, createContact } from '../contacts';
+import { fakeAuthProvider } from '../auth';
 
 export async function rootLoader({ request }: any) {
   // If the user is not logged in and tries to access `/protected`, we redirect
@@ -17,12 +8,12 @@ export async function rootLoader({ request }: any) {
   // to this page upon successful authentication
   if (!fakeAuthProvider.isAuthenticated) {
     let params = new URLSearchParams();
-    params.set("from", new URL(request.url).pathname);
-    return redirect("/login?" + params.toString());
+    params.set('from', new URL(request.url).pathname);
+    return redirect('/login?' + params.toString());
   }
 
   const url = new URL(request.url);
-  const query = url.searchParams.get("query");
+  const query = url.searchParams.get('query');
   const contacts = await getContacts(query);
   return { contacts, query };
 }
@@ -43,9 +34,7 @@ export default function Root() {
 
   let isLoggingOut = fetcher.formData != null;
 
-  const searching =
-    navigation.location &&
-    new URLSearchParams(navigation.location.search).has("query");
+  const searching = navigation.location && new URLSearchParams(navigation.location.search).has('query');
 
   // useEffect(() => {
   //   (document.getElementById("query")! as HTMLInputElement).value = query || "";
@@ -55,10 +44,10 @@ export default function Root() {
     <>
       <div id="sidebar">
         <footer>
-          WEINMANN QA Task{" "}
+          WEINMANN QA Task{' '}
           <fetcher.Form method="post" action="/logout">
             <button type="submit" disabled={isLoggingOut} data-testid="signout">
-              {isLoggingOut ? "Signing out..." : "Sign out"}
+              {isLoggingOut ? 'Signing out...' : 'Sign out'}
             </button>
           </fetcher.Form>
         </footer>
@@ -70,8 +59,8 @@ export default function Root() {
               placeholder="Search"
               type="search"
               name="query"
-              className={searching ? "loading" : ""}
-              onChange={(event) => {
+              className={searching ? 'loading' : ''}
+              onChange={event => {
                 const isFirstSearch = query == null;
                 submit(event.currentTarget.form, {
                   replace: !isFirstSearch,
@@ -82,19 +71,19 @@ export default function Root() {
             <div className="sr-only" aria-live="polite"></div>
           </Form>
           <Form method="post">
-            <button type="submit" data-testid="new-contact">New</button>
+            <button type="submit" data-testid="new-contact">
+              New
+            </button>
           </Form>
         </div>
         <nav>
           {contacts.length ? (
             <ul>
-              {contacts.map((contact) => (
+              {contacts.map(contact => (
                 <li key={contact.id}>
                   <NavLink
                     to={`contacts/${contact.id}`}
-                    className={({ isActive, isPending }) =>
-                      isActive ? "active" : isPending ? "pending" : ""
-                    }
+                    className={({ isActive, isPending }) => (isActive ? 'active' : isPending ? 'pending' : '')}
                   >
                     {contact.first || contact.last ? (
                       <>
@@ -102,7 +91,7 @@ export default function Root() {
                       </>
                     ) : (
                       <i>No Name</i>
-                    )}{" "}
+                    )}{' '}
                     {contact.favorite && <span data-testid="favorized">★</span>}
                   </NavLink>
                 </li>
@@ -115,10 +104,7 @@ export default function Root() {
           )}
         </nav>
       </div>
-      <div
-        id="detail"
-        className={navigation.state === "loading" ? "loading" : ""}
-      >
+      <div id="detail" className={navigation.state === 'loading' ? 'loading' : ''}>
         <Outlet />
       </div>
     </>
