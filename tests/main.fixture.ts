@@ -1,6 +1,5 @@
 import { type Page, test as base } from '@playwright/test';
-import { WebClient } from '../pages/index.page';
-import { LoginPage } from '../pages/login.page';
+import { WebClient } from '../POM/index.page';
 import { getConfig, TestConfig } from '../utils/config';
 
 type WebFixtures = {
@@ -24,3 +23,5 @@ export const baseFixture = base.extend<WebFixtures & OtherFixtures>({
     await use(webClient);
   },
 });
+
+export { expect } from '@playwright/test';
