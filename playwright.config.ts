@@ -40,10 +40,12 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
     viewport: { width: 1440, height: 900 },
+    // headless: false,
     headless: false,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
+    // trace: 'on-first-retry',
   },
 
   /* Configure projects for major browsers */
