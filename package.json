@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "PLACEHOLDER"
+    "test": "playwright test",
+    "test_chromium": "playwright test --project=chromium"
   },
   "dependencies": {
     "localforage": "^1.10.0",
@@ -19,6 +20,8 @@
     "sort-by": "^1.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.7.5",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@types/sort-by": "^1.2.3",
