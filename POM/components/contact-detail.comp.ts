@@ -12,7 +12,7 @@ export class ContactDetailComp extends BasePageComponent {
 
   // Buttons for create
   public readonly saveButton = this.base.getByTestId('save-contact');
-  public readonly cancelButton = this.base.getByTestId('save-contact');
+  public readonly cancelButton = this.base.getByTestId('cancel-contact');
 
   // Saved contact information
   public readonly contactInfoSection = this.base.locator('#contact');
@@ -26,4 +26,29 @@ export class ContactDetailComp extends BasePageComponent {
   public readonly favoriteButton = this.contactInfoSection.getByTestId('favorize-contact');
   public readonly editButton = this.contactInfoSection.getByTestId('edit-contact');
   public readonly deleteButton = this.contactInfoSection.getByTestId('delete-contact');
+
+  public async fillContactInfoForm(args: {
+    firstName: string;
+    lastName: string;
+    twitter: string;
+    avatarURL: string;
+    notes: string;
+  }): Promise<void> {
+    await this.firstNameInput.fill(args.firstName);
+    await this.lastNameInput.fill(args.lastName);
+    await this.twitterInput.fill(args.twitter);
+    await this.avatarURLInput.fill(args.avatarURL);
+    await this.notesInput.fill(args.notes);
+  }
+
+  public async fillContactInfoFormAndSave(args: {
+    firstName: string;
+    lastName: string;
+    twitter: string;
+    avatarURL: string;
+    notes: string;
+  }): Promise<void> {
+    await this.fillContactInfoForm(args);
+    await this.saveButton.click();
+  }
 }
