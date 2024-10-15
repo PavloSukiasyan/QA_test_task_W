@@ -10,7 +10,8 @@ export class NewAndSearchFormComp extends BasePageComponent {
 
   public async performSearch(query: string): Promise<void> {
     await this.searchInput.fill(query);
-    await this.spinner.waitFor({ state: 'visible' });
-    await this.spinner.waitFor({ state: 'hidden' });
+    if (await this.spinner.isVisible()) {
+      await this.spinner.waitFor({ state: 'hidden', timeout: 10 * 1000 });
+    }
   }
 }

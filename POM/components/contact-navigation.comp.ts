@@ -10,4 +10,14 @@ export class ContactNavigationComp extends BasePageComponent {
   public async getContactByFullName(fullName: string): Promise<Locator> {
     return this.contactListElement.getByText(fullName);
   }
+
+  public async isContactFavorite(fullName: string): Promise<boolean> {
+    const contact = await this.getContactByFullName(fullName);
+    try {
+      await contact.getByTestId('favorized').waitFor({ state: 'visible', timeout: 10 * 1000 });
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
 }
