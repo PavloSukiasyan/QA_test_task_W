@@ -59,5 +59,7 @@ export class ContactDetailComp extends BasePageComponent {
   }): Promise<void> {
     await this.fillContactInfoForm(args);
     await this.saveButton.click();
+
+    await this.editButton.waitFor({ state: 'visible' });
   }
 }

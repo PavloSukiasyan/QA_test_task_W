@@ -37,8 +37,6 @@ test.describe('Tests for filter contact:', () => {
         avatarURL: firstContactInfo.avatarURL,
         notes: firstContactInfo.notes,
       });
-
-      await testWebClient.contactDetailComp.editButton.waitFor({ state: 'visible' });
     });
 
     await test.step('Create second contact', async () => {
@@ -50,8 +48,6 @@ test.describe('Tests for filter contact:', () => {
         avatarURL: secondContactInfo.avatarURL,
         notes: secondContactInfo.notes,
       });
-
-      await testWebClient.contactDetailComp.editButton.waitFor({ state: 'visible' });
     });
 
     await test.step('Create third contact', async () => {
@@ -61,8 +57,6 @@ test.describe('Tests for filter contact:', () => {
         lastName: thirdContactInfo.last_name,
         notes: thirdContactInfo.notes,
       });
-
-      await testWebClient.contactDetailComp.editButton.waitFor({ state: 'visible' });
     });
 
     await test.step(`Verify there is three contacts`, async () => {
