@@ -40,6 +40,10 @@ test.describe('Tests for delete contact:', () => {
       await testWebClient.contactDetailComp.deleteButton.click();
     });
 
+    await test.step('Verify contact is deleted and not shown in contact details', async () => {
+      await expect.soft(testWebClient.contactDetailComp.emptyContactInfoSection).toHaveText('Please select a contact');
+    });
+
     await test.step('Verify contact is deleted in side bar', async () => {
       await expect.soft(testWebClient.contactNavigationComp.contactListElement.nth(0)).toBeHidden();
       expect

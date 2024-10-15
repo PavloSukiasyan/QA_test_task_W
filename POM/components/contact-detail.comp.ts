@@ -27,6 +27,9 @@ export class ContactDetailComp extends BasePageComponent {
   public readonly editButton = this.contactInfoSection.getByTestId('edit-contact');
   public readonly deleteButton = this.contactInfoSection.getByTestId('delete-contact');
 
+  // Empty contact information
+  public readonly emptyContactInfoSection = this.base.locator('#zero-state');
+
   public async fillContactInfoForm(args: {
     firstName: string;
     lastName: string;
